@@ -6,19 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashii⚡</title>
     <link href="perfil.css" rel="stylesheet">
-    <script>src = "perfil.js"</script>
+    <script>src = "ranking.js"</script>
 </head>
 
 <body>
-<aside class="sidebar">
+    <aside class="sidebar">
         <div class="logo">⚡ Flashii</div>
         <a href="flashcards.html" class="item">FlashCards</a>
-        <a href="#" class="item">Chat</a>
-        <a href="ranking.css" class="item">Ranking</a>
+        <a href="chat.html" class="item">Chat</a>
+        <a href="ranking.html" class="item active">Ranking</a>
         <a href="banco.html" class="item">Banco de Questões</a>
-        <a href="perfil.html" class="item active">Perfil</a>
+        <a href="perfil.html" class="item">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
     </aside>
-    
+
+    <div class="ranking-container">
+        <button >Rank</button>
+        <h2>Top Jogadores</h2>
+        <table id="ranking-table">
+            <thead>
+                <tr>
+                    <th>Posição</th>
+                    <th>Nome</th>
+                    <th>Pontuação</th>
+                </tr>
+            </thead>
+            <tbody id="ranking-body"> </tbody>
+        </table>
+    </div>
+
 </body>
+
 </html>

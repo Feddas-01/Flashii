@@ -51,13 +51,16 @@
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    max-width: 1000px;
+    max-width: 1550px;
+    max-height: 900px;
     text-align: center;
+    margin-left: 10px;
 }
 
 .tela {
 
     margin-left: 250px;
+  
 }
 
 .texto {
@@ -118,7 +121,22 @@ button {
     color: #e64a19;
     border: 1px solid #e64a19;
     background: none;
-    padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.aceitar{
+        color: #e0d6d2;
+    border: 1px solid #d44519;
+    background-color: #e64a19;
+    border-radius: 5px;
+    cursor: pointer;
+   width:75px;
+    height: 25px;
+    margin-left: 735px ;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+
+
 }

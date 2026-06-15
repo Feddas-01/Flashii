@@ -14,7 +14,7 @@
         <div class="logo">⚡ Flashii</div>
         <a href="flashcards.html" class="item">FlashCards</a>
         <a href="#" class="item">Chat</a>
-        <a href="ranking.css" class="item">Ranking</a>
+        <a href="ranking.html" class="item">Ranking</a>
         <a href="banco.html" class="item">Banco de Questões</a>
         <a href="perfil.html" class="item active">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
@@ -26,7 +26,7 @@
             <div class="avatar">...</div>
             <button>Alterar Foto</button>
 
-            <form class="grid">
+            <form class="grid" action="cadastrar.php" method="post">
                 <div class="caixa1">
                     <label>Nome Completo</label>
                     <input type="text" placeholder="Ex: Michael Jackson">
@@ -51,6 +51,7 @@
                     <label>Instituição de Ensino</label>
                     <input type="text" placeholder="Ex: Colégio Progressão">
                 </div>
+                <button class="aceitar" onsubmit="cadastrarUsuario()">Cadastrar</button>
             </form>
         </div>
     </main>

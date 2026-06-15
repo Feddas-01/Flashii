@@ -45,3 +45,51 @@
     overflow-y: auto;
     flex-direction: row;
 }
+
+.ranking-container {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding-left: 500px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+tr:nth-child(1) td {
+    font-weight: bold;
+    color: #d4af37;
+    
+}
+tr:nth-child(2) td {
+    font-weight: bold;
+    color: #88857c;
+    
+}
+
+tr:nth-child(3) td {
+    font-weight: bold;
+    color: #775d06;
+    
+}
