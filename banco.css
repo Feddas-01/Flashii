@@ -1,0 +1,47 @@
+.sidebar {
+    width: 250px;
+    background-color: #e64a1b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 20px 0;
+    height: 890px;
+}
+
+.item {
+    gap: 10px;
+    padding: 20px;
+    text-decoration: none;
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.item:hover {
+    gap: 10px;
+    padding: 15px 20px;
+    transition: 0.3s;
+    color: #e64a1b;
+    background-color: white;
+
+}
+
+.active {
+    background-color: white;
+    color: #e64a19;
+    margin: 0 px;
+    border-radius: 8px;
+}
+
+.logo {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50pt;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    padding: 40px;
+    overflow-y: auto;
+    flex-direction: row;
+}
