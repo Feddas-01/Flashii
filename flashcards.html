@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashii⚡</title>
     <link href="flashcards.css" rel="stylesheet">
-    <script>src = "flashcards.js"</script>
+    <script src="flashcards.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,15 @@
     </aside>
     <main class="tela">
         <h1 class="texto">FlashCards</h1>
-        <button type="submit" class="b">+</button>
-    
+        <button id="abrir" onclick="abrirPopup()" class="b">+</button>
+        <div id="overlay" class="overlay">
+            <div class="popup">
+                <h2>Adicionar FlashCard</h2>
+                <input type="text" id="pergunta" placeholder="Digite a pergunta">
+                <input type="text" id="resposta" placeholder="Digite a resposta">
+                <button id="salvar">Salvar</button>
+                <button id="fechar" onclick="fecharPopup()">Fechar</button>
+            </div>
+          </div>    
 </body>
 </html>
