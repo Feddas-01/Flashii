@@ -1,17 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashii⚡</title>
-    <link href="flashcards.css" rel="stylesheet">
-    <script src="flashcards.js"></script>
+    <title>Flashii ⚡</title>
+
+    <link rel="stylesheet" href="flashcards.css">
+     <script src="flashcards.js"></script>
 </head>
 
 <body>
-<aside class="sidebar">
-        <div class="logo"><img src="logo.png" alt="Flashii"></div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Flashii">
+        </div>
+
         <a href="flashcards.html" class="item active">FlashCards</a>
         <a href="chat.html" class="item">Chat</a>
         <a href="ranking.html" class="item">Ranking</a>
@@ -19,17 +24,58 @@
         <a href="perfil.html" class="item">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
     </aside>
+
     <main class="tela">
+
         <h1 class="texto">FlashCards</h1>
-        <button id="abrir" onclick="abrirPopup()" class="b">+</button>
+
+        <button id="abrir" class="b" onclick="abrirPopup()">
+            +
+        </button>
+
+        <div id="listaFlashcards"></div>
+
         <div id="overlay" class="overlay">
+
             <div class="popup">
+
                 <h2>Adicionar FlashCard</h2>
-                <input type="text" id="pergunta" placeholder="Digite a pergunta">
-                <input type="text" id="resposta" placeholder="Digite a resposta">
-                <button id="salvar">Salvar</button>
-                <button id="fechar" onclick="fecharPopup()">Fechar</button>
+
+                <input
+                    type="text"
+                    id="pergunta"
+                    placeholder="Digite a pergunta"
+                >
+
+                <br><br>
+
+                <input
+                    type="text"
+                    id="resposta"
+                    placeholder="Digite a resposta"
+                >
+
+                <br><br>
+
+                <button id="salvar">
+                    Salvar
+                </button>
+
+                <button
+                    id="fechar"
+                    onclick="fecharPopup()"
+                >
+                    Fechar
+                </button>
+
             </div>
-          </div>    
+
+        </div>
+
+    </main>
+
+   
+
 </body>
 </html>
+
