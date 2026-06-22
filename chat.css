@@ -55,7 +55,7 @@ img {
 }
 
 .chat-container {
-    margin-left: 250px; /* Empurra o chat para o lado para não cobrir a sidebar */
+    margin-left: 250px; 
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -69,15 +69,16 @@ img {
     padding: 20px;
     border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .chat-header h2 {
     color: #333;
-    font-size: 20px;
+    font-size: 34px;
 }
 
 .chat-header .status {
-    font-size: 12px;
+    font-size: 16px;
     color: #2ecc71;
     font-weight: bold;
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
