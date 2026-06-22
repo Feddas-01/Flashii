@@ -4,4 +4,10 @@ function abrirPopup(){
 
 function fecharPopup(){
     document.getElementById("overlay").style.display = "none";
+
+    document.addEventListener("click", (event) => {
+    if (!overlay.contains(event.target)) {
+        overlay.style.display = "none"; 
+    }
+});
 }
