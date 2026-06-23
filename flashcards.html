@@ -1,18 +1,22 @@
 
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashii ⚡</title>
+    <title>Flashii ⚡ - Flashcards</title>
 
     <link rel="stylesheet" href="flashcards.css">
-     <script src="flashcards.js"></script>
 </head>
 
 <body>
 
+   
+
     <aside class="sidebar">
+
         <div class="logo">
             <img src="logo.png" alt="Flashii">
         </div>
@@ -23,59 +27,127 @@
         <a href="banco.html" class="item">Banco de Questões</a>
         <a href="perfil.html" class="item">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
+
     </aside>
+
+   
 
     <main class="tela">
 
         <h1 class="texto">FlashCards</h1>
 
-        <button id="abrir" class="b" onclick="abrirPopup()">
-            + 
-        </button>
+     
 
-        <div id="listaFlashcards"></div>
+        <div class="topo">
 
-        <div id="overlay" class="overlay">
+            <div class="baralho-container">
 
-            <div class="popup">
+                <label>Baralho:</label>
 
-                <h2>Adicionar FlashCard</h2>
+                <select id="baralhoSelect"></select>
 
-                <input
-                    type="text"
-                    id="pergunta"
-                    placeholder="Digite a pergunta"
-                >
-
-                <br><br>
-
-                <input
-                    type="text"
-                    id="resposta"
-                    placeholder="Digite a resposta"
-                >
-
-                <br><br>
-
-                <button id="salvar">
-                    Salvar
+                <button id="novoBaralhoBtn">
+                    + Novo Baralho
                 </button>
 
-                <button
-                    id="fechar"
-                    onclick="fecharPopup()"
-                >
-                    Fechar
+                <button id="excluirBaralhoBtn">
+                    Excluir Baralho
                 </button>
 
             </div>
 
         </div>
 
+       
+
+        <button
+            class="b"
+            onclick="abrirPopup()"
+        >
+            +
+        </button>
+
+    
+
+        <div id="listaFlashcards"></div>
+
     </main>
 
-   
+>
+
+    <div
+        id="overlay"
+        class="overlay"
+    >
+
+        <div class="popup">
+
+            <h2>Criar Flashcard</h2>
+
+            <input
+                type="text"
+                id="pergunta"
+                placeholder="Digite a pergunta"
+            >
+
+            <input
+                type="text"
+                id="resposta"
+                placeholder="Digite a resposta"
+            >
+
+            <div class="popup-botoes">
+
+                <button id="salvar">
+                    Salvar
+                </button>
+
+                <button onclick="fecharPopup()">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div
+        id="overlayBaralho"
+        class="overlay"
+    >
+
+        <div class="popup">
+
+            <h2>Novo Baralho</h2>
+
+            <input
+                type="text"
+                id="nomeBaralho"
+                placeholder="Nome do baralho"
+            >
+
+            <div class="popup-botoes">
+
+                <button id="criarBaralho">
+                    Criar
+                </button>
+
+                <button onclick="fecharPopupBaralho()">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="flashcards.js"></script>
 
 </body>
+
 </html>
 

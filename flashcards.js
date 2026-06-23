@@ -1,4 +1,5 @@
-
+let dados = {};
+let baralhoAtual = "";
 
 
 
@@ -8,139 +9,309 @@ function abrirPopup() {
 
 function fecharPopup() {
     document.getElementById("overlay").style.display = "none";
+
+    document.getElementById("pergunta").value = "";
+    document.getElementById("resposta").value = "";
+}
+
+function abrirPopupBaralho() {
+    document.getElementById("overlayBaralho").style.display = "flex";
+}
+
+function fecharPopupBaralho() {
+    document.getElementById("overlayBaralho").style.display = "none";
+
+    document.getElementById("nomeBaralho").value = "";
 }
 
 
-window.onload = function () {
-    carregarFlashcards();
+
+function salvarDados() {
+    localStorage.setItem(
+        "flashii_baralhos",
+        JSON.stringify(dados)
+    );
+}
+
+function carregarDados() {
+
+    const salvo =
+        localStorage.getItem("flashii_baralhos");
+
+    if (salvo) {
+
+        dados = JSON.parse(salvo);
+
+    } else {
+
+        dados = {
+            "Meu Primeiro Baralho": []
+        };
+
+        salvarDados();
+
+    }
+
+    atualizarSelect();
+}
+
+
+
+function atualizarSelect() {
+
+    const select =
+        document.getElementById("baralhoSelect");
+
+    select.innerHTML = "";
+
+    Object.keys(dados).forEach(function(nome){
+
+        const option =
+            document.createElement("option");
+
+        option.value = nome;
+        option.textContent = nome;
+
+        select.appendChild(option);
+
+    });
+
+    if (
+        !baralhoAtual ||
+        !dados[baralhoAtual]
+    ) {
+
+        baralhoAtual =
+            Object.keys(dados)[0];
+
+    }
+
+    select.value = baralhoAtual;
+
+    renderizarFlashcards();
+
+}
+
+
+
+window.onload = function(){
+
+    carregarDados();
+
+    document
+        .getElementById("novoBaralhoBtn")
+        .addEventListener(
+            "click",
+            abrirPopupBaralho
+        );
+
+    document
+        .getElementById("criarBaralho")
+        .addEventListener(
+            "click",
+            criarBaralho
+        );
 
     document
         .getElementById("salvar")
-        .addEventListener("click", salvarFlashcard);
+        .addEventListener(
+            "click",
+            criarFlashcard
+        );
+
+    document
+        .getElementById("baralhoSelect")
+        .addEventListener(
+            "change",
+            function(){
+
+                baralhoAtual = this.value;
+
+                renderizarFlashcards();
+
+            }
+        );
+
+    document
+        .getElementById("excluirBaralhoBtn")
+        .addEventListener(
+            "click",
+            excluirBaralho
+        );
+
 };
 
 
 
-function salvarFlashcard() {
-    const pergunta = document.getElementById("pergunta").value.trim();
-    const resposta = document.getElementById("resposta").value.trim();
+function criarBaralho() {
 
-    if (pergunta === "" || resposta === "") {
-        alert("Preencha a pergunta e a resposta.");
+    const input = document.getElementById("nomeBaralho");
+    const nome = input.value.trim();
+
+    if (nome === "") {
+        alert("Digite um nome para o baralho.");
         return;
     }
 
-    let flashcards =
-        JSON.parse(localStorage.getItem("flashcards")) || [];
+    if (dados[nome]) {
+        alert("Já existe um baralho com esse nome.");
+        return;
+    }
 
-    flashcards.push({
-        pergunta,
-        resposta
-    });
+    dados[nome] = [];
 
-    localStorage.setItem(
-        "flashcards",
-        JSON.stringify(flashcards)
+    baralhoAtual = nome;
+
+    salvarDados();
+
+    atualizarSelect();
+
+    fecharPopupBaralho();
+}
+
+
+
+function excluirBaralho() {
+
+    const nomes = Object.keys(dados);
+
+    if (nomes.length <= 1) {
+        alert("É necessário manter pelo menos um baralho.");
+        return;
+    }
+
+    const confirmar = confirm(
+        `Deseja realmente excluir o baralho "${baralhoAtual}"?`
     );
 
-    criarFlashcard(pergunta, resposta);
+    if (!confirmar) {
+        return;
+    }
 
-    document.getElementById("pergunta").value = "";
-    document.getElementById("resposta").value = "";
+    delete dados[baralhoAtual];
+
+    baralhoAtual = Object.keys(dados)[0];
+
+    salvarDados();
+
+    atualizarSelect();
+}
+
+
+function criarFlashcard() {
+
+    const pergunta =
+        document.getElementById("pergunta")
+        .value
+        .trim();
+
+    const resposta =
+        document.getElementById("resposta")
+        .value
+        .trim();
+
+    if (pergunta === "" || resposta === "") {
+
+        alert("Preencha a pergunta e a resposta.");
+
+        return;
+
+    }
+
+    dados[baralhoAtual].push({
+
+        pergunta: pergunta,
+
+        resposta: resposta
+
+    });
+
+    salvarDados();
 
     fecharPopup();
+
+    renderizarFlashcards();
 }
 
 
 
-function criarFlashcard(pergunta, resposta) {
+function excluirFlashcard(indice) {
 
-    const lista = document.getElementById("listaFlashcards");
+    const confirmar = confirm(
+        "Deseja excluir este flashcard?"
+    );
 
-    const card = document.createElement("div");
-    card.className = "flashcard";
+    if (!confirmar) {
+        return;
+    }
 
-    card.innerHTML = `
-        <button class="btn-excluir">&times;</button>
+    dados[baralhoAtual].splice(indice, 1);
 
-        <div class="flashcard-inner">
+    salvarDados();
 
-            <div class="flashcard-front">
-                ${pergunta}
-            </div>
-
-            <div class="flashcard-back">
-                ${resposta}
-            </div>
-
-        </div>
-    `;
-
-   
-    card.addEventListener("click", function (e) {
-
-        if (e.target.classList.contains("btn-excluir")) {
-            return;
-        }
-
-        card.classList.toggle("virado");
-
-    });
-
-   
-    card.querySelector(".btn-excluir").addEventListener("click", function (e) {
-
-        e.stopPropagation();
-
-        if (!confirm("Deseja excluir este flashcard?")) {
-            return;
-        }
-
-        let flashcards =
-            JSON.parse(localStorage.getItem("flashcards")) || [];
-
-        const indice = flashcards.findIndex(function (item) {
-            return (
-                item.pergunta === pergunta &&
-                item.resposta === resposta
-            );
-        });
-
-        if (indice !== -1) {
-            flashcards.splice(indice, 1);
-        }
-
-        localStorage.setItem(
-            "flashcards",
-            JSON.stringify(flashcards)
-        );
-
-        card.remove();
-
-    });
-
-    lista.appendChild(card);
-
+    renderizarFlashcards();
 }
 
 
-
-function carregarFlashcards() {
+function renderizarFlashcards() {
 
     const lista = document.getElementById("listaFlashcards");
+
     lista.innerHTML = "";
 
-    const flashcards =
-        JSON.parse(localStorage.getItem("flashcards")) || [];
+    if (!dados[baralhoAtual]) {
+        return;
+    }
 
-    flashcards.forEach(function (flashcard) {
+    dados[baralhoAtual].forEach(function (flashcard, indice) {
 
-        criarFlashcard(
-            flashcard.pergunta,
-            flashcard.resposta
+        const card = document.createElement("div");
+        card.className = "flashcard";
+
+        card.innerHTML = `
+            <button class="btn-excluir">&times;</button>
+
+            <div class="flashcard-inner">
+
+                <div class="flashcard-front">
+                    ${flashcard.pergunta}
+                </div>
+
+                <div class="flashcard-back">
+                    ${flashcard.resposta}
+                </div>
+
+            </div>
+        `;
+
+
+        card.addEventListener("click", function (event) {
+
+            if (event.target.classList.contains("btn-excluir")) {
+                return;
+            }
+
+            card.classList.toggle("virado");
+
+        });
+
+     
+        const botaoExcluir =
+            card.querySelector(".btn-excluir");
+
+        botaoExcluir.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+                excluirFlashcard(indice);
+
+            }
         );
+
+        lista.appendChild(card);
 
     });
 
 }
-
