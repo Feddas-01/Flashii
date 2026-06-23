@@ -1,24 +1,178 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashii⚡</title>
-    <link href="banco.css" rel="stylesheet">
-    <script>src = "perfil.js"</script>
+    <title>Flashii ⚡ - Banco de Questões</title>
+
+    <link rel="stylesheet" href="banco.css">
 </head>
 
 <body>
-<aside class="sidebar">
-        <div class="logo"><img src="logo.png" alt="Flashii"></div>
+
+   
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <img src="logo.png" alt="Flashii">
+        </div>
+
         <a href="flashcards.html" class="item">FlashCards</a>
         <a href="chat.html" class="item">Chat</a>
         <a href="ranking.html" class="item">Ranking</a>
         <a href="banco.html" class="item active">Banco de Questões</a>
         <a href="perfil.html" class="item">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
+        <a href="loja.html" class="item">Loja</a>
+
     </aside>
-    
+
+  
+
+    <main class="conteudo">
+
+        <h1>Banco de Questões</h1>
+
+        <div class="topo">
+
+            <button id="btnNovoBanco">
+                + Novo Banco
+            </button>
+
+            <select id="selectBanco">
+            </select>
+
+            <button id="btnNovaQuestao">
+                + Nova Questão
+            </button>
+
+            <button id="btnExcluirBanco">
+                Excluir Banco
+            </button>
+
+        </div>
+
+        <div id="listaQuestoes">
+
+        </div>
+
+    </main>
+
+  
+
+    <div class="overlay" id="popupBanco">
+
+        <div class="popup">
+
+            <h2>Criar Banco</h2>
+
+            <input
+                type="text"
+                id="nomeBanco"
+                placeholder="Nome do banco"
+            >
+
+            <div class="popupBotoes">
+
+                <button id="criarBanco">
+                    Criar
+                </button>
+
+                <button id="fecharBanco">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="overlay" id="popupQuestao">
+
+        <div class="popup">
+
+            <h2>Nova Questão</h2>
+
+            <textarea
+                id="pergunta"
+                placeholder="Digite a pergunta"
+            ></textarea>
+
+            <input
+                id="alternativaA"
+                type="text"
+                placeholder="Alternativa A"
+            >
+
+            <input
+                id="alternativaB"
+                type="text"
+                placeholder="Alternativa B"
+            >
+
+            <input
+                id="alternativaC"
+                type="text"
+                placeholder="Alternativa C"
+            >
+
+            <input
+                id="alternativaD"
+                type="text"
+                placeholder="Alternativa D"
+            >
+
+            <label>
+
+                Resposta correta:
+
+                <select id="respostaCorreta">
+
+                    <option value="0">
+                        A
+                    </option>
+
+                    <option value="1">
+                        B
+                    </option>
+
+                    <option value="2">
+                        C
+                    </option>
+
+                    <option value="3">
+                        D
+                    </option>
+
+                </select>
+
+            </label>
+
+            <div class="popupBotoes">
+
+                <button id="salvarQuestao">
+                    Salvar
+                </button>
+
+                <button id="fecharQuestao">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="banco.js"></script>
+
 </body>
+
 </html>
+
