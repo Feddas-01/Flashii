@@ -1,63 +1,49 @@
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:#f5f5f5;
-    display:flex;
-}
-
-
-
-.sidebar{
-    width:250px;
-    min-height:100vh;
-    background:#fa3f06;
-    display:flex;
-    flex-direction:column;
-    padding:20px 0;
-}
-
-.logo{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.logo img{
-    width:200px;
-    height:auto;
-}
-
-.item{
-    padding:18px;
-    color:white;
-    text-decoration:none;
-    font-family:Arial, Helvetica, sans-serif;
-    transition:.2s;
-}
-
-.item:hover{
-    background:white;
-    color:#fa3f06;
-    border-radius:10px;
-}
-
-.active{
-    background:white;
-    color:#fa3f06;
-    border-radius:10px;
-}
-
-.main-content {
-    flex: 1;
+body {
+    background: #f4f4f4;
     display: flex;
-    padding: 40px;
-    overflow-y: auto;
-    flex-direction: row;
-    
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* SIDEBAR REESTRUTURADA */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #fa3f06;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 180px;
+    height: auto;
+}
+
+.item {
+    padding: 18px 20px;
+    color: white;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.item:hover, .active {
+    background: white;
+    color: #fa3f06;
+    border-radius: 10px 0 0 10px; /* Mantém o encaixe na tela */
+    margin-left: 10px;
 }
 
 
@@ -86,7 +72,7 @@ img {
 }
 
 .chat-header h2 {
-    color: #333;
+    color: #fa3f06;
     font-size: 34px;
 }
 
@@ -174,4 +160,87 @@ img {
 
 .chat-input-area button:hover {
     background-color: #e64a1b;
+}
+/* ==========================================================================
+   COMPONENTES VISUAIS DE INTELIGÊNCIA ARTIFICIAL (IA)
+   ========================================================================== */
+
+/* Botões com tema de IA - Usando um degradê moderno de roxo/azul para destacar do laranja */
+.btn-ia {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white !important;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 6px rgba(106, 17, 203, 0.2);
+}
+
+.btn-ia:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(106, 17, 203, 0.4);
+    opacity: 1 !important; /* Evita opacidade da sidebar se usado próximo */
+}
+
+/* Caixa de destaque do Gerador no Banco de Questões */
+.ia-generator-box {
+    background: #ffffff;
+    border: 2px dashed #6a11cb; /* Borda tracejada roxa para indicar algo "mágico" */
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ia-generator-box h3 {
+    color: #6a11cb;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ia-generator-box p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.ia-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.ia-input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+.ia-input-group input:focus {
+    border-color: #6a11cb;
+}
+
+/* Botão de IA dentro do Chat */
+.btn-chat-ia {
+    background: transparent;
+    border: 1px solid #6a11cb;
+    color: #6a11cb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-chat-ia:hover {
+    background: #6a11cb;
+    color: white;
 }

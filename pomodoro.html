@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashii ⚡ - Pomodoro</title>
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="pomodoro.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo"><img src="logo.png" alt="Flashii"></div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="item">FlashCards</a>
+            <a href="chat.html" class="item">Chat</a>
+            <a href="ranking.html" class="item">Ranking</a>
+            <a href="banco.html" class="item">Banco de Questões</a>
+            <a href="perfil.html" class="item">Perfil</a>
+            <a href="donate.html" class="item">Doações</a>
+            <a href="loja.html" class="item">Loja</a>
+               <a href="pomodoro.html" class="item active">Pomodoro</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="pomodoro-container">
+             <h1 class="texto">Pomodoro</h1> 
+            
+            <div class="config-box" id="configBox">
+                <h3>⏱️ Configurar Timer</h3>
+                <div class="input-group">
+                    <input type="number" id="inputMinutos" min="1" max="60" value="25" placeholder="Minutos">
+                    <button id="btnIniciar" class="btn-pomodoro">Iniciar Foco</button>
+                </div>
+             
+
+    <div class="pomodoro-container" style="margin-top: auto; max-width: 480px;">
+        </div>
+            </div>
+
+            <div class="timer-box escondido" id="timerBox">
+                <div class="countdown" id="countdownDisplay">25:00</div>
+                <div class="control-buttons">
+                    <button id="btnPausar" class="btn-control">Pausar</button>
+                    <button id="btnResetar" class="btn-control btn-danger">Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="pomodoro.js"></script>
+</body>
+
+</html>

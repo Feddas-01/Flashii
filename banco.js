@@ -1,9 +1,5 @@
-
-
 let bancos = {};
 let bancoAtual = "";
-
-
 
 const popupBanco = document.getElementById("popupBanco");
 const popupQuestao = document.getElementById("popupQuestao");
@@ -20,226 +16,126 @@ const btnFecharQuestao = document.getElementById("fecharQuestao");
 
 const selectBanco = document.getElementById("selectBanco");
 
+// ==========================================
+// NOVO: SISTEMA DE CONTROLE DE MOEDAS
+// ==========================================
+function obterSaldoMoedas() {
+    const saldo = localStorage.getItem("flashiiMoedas");
+    return saldo ? parseInt(saldo) : 0; // Se não existir, começa com 0
+}
 
+function adicionarMoedas(quantidade) {
+    const saldoAtual = obterSaldoMoedas();
+    const novoSaldo = saldoAtual + quantidade;
+    localStorage.setItem("flashiiMoedas", novoSaldo);
+    console.log(`+${quantidade} moedas adicionadas! Saldo atual: ${novoSaldo}`);
+}
+// ==========================================
 
 function salvar() {
-
-    localStorage.setItem(
-        "flashiiBancoQuestoes",
-        JSON.stringify(bancos)
-    );
-
+    localStorage.setItem("flashiiBancoQuestoes", JSON.stringify(bancos));
 }
 
 function carregar() {
-
-    const salvo =
-        localStorage.getItem(
-            "flashiiBancoQuestoes"
-        );
+    const salvo = localStorage.getItem("flashiiBancoQuestoes");
 
     if (salvo) {
-
         bancos = JSON.parse(salvo);
-
     } else {
-
         bancos = {
             "Geral": []
         };
-
         salvar();
-
     }
 
-    bancoAtual =
-        Object.keys(bancos)[0];
-
+    bancoAtual = Object.keys(bancos)[0];
     atualizarSelect();
-
 }
 
-
-
 function atualizarSelect() {
-
     const select = document.getElementById("selectBanco");
-
     select.innerHTML = "";
 
-    Object.keys(bancos).forEach(function(nome) {
-
+    Object.keys(bancos).forEach(function (nome) {
         const option = document.createElement("option");
-
         option.value = nome;
         option.textContent = nome;
-
         select.appendChild(option);
-
     });
 
     select.value = bancoAtual;
 }
 
-btnNovoBanco.onclick = function(){
-
+btnNovoBanco.onclick = function () {
     popupBanco.style.display = "flex";
-
 };
 
-btnFecharBanco.onclick = function(){
-
+btnFecharBanco.onclick = function () {
     popupBanco.style.display = "none";
-
-    document
-        .getElementById("nomeBanco")
-        .value = "";
-
+    document.getElementById("nomeBanco").value = "";
 };
 
-btnNovaQuestao.onclick = function(){
-
+btnNovaQuestao.onclick = function () {
     popupQuestao.style.display = "flex";
-
 };
 
-btnFecharQuestao.onclick = function(){
-
+btnFecharQuestao.onclick = function () {
     popupQuestao.style.display = "none";
-
 };
 
+btnCriarBanco.onclick = function () {
+    const nome = document.getElementById("nomeBanco").value.trim();
 
-
-btnCriarBanco.onclick = function(){
-
-    const nome =
-        document
-        .getElementById("nomeBanco")
-        .value
-        .trim();
-
-    if(nome === ""){
-
+    if (nome === "") {
         alert("Digite um nome.");
-
         return;
-
     }
 
-    if(bancos[nome]){
-
+    if (bancos[nome]) {
         alert("Esse banco já existe.");
-
         return;
-
     }
 
     bancos[nome] = [];
-
     bancoAtual = nome;
 
     salvar();
-
     atualizarSelect();
-
     popupBanco.style.display = "none";
-
-    document
-        .getElementById("nomeBanco")
-        .value = "";
-
+    document.getElementById("nomeBanco").value = "";
     renderizarQuestoes();
-
 };
 
-
-
-selectBanco.onchange = function(){
-
+selectBanco.onchange = function () {
     bancoAtual = this.value;
-
     renderizarQuestoes();
-
 };
 
-
-
-btnExcluirBanco.onclick = function(){
-
-    if(Object.keys(bancos).length <= 1){
-
-        alert(
-            "Deixe pelo menos um banco criado."
-        );
-
+btnExcluirBanco.onclick = function () {
+    if (Object.keys(bancos).length <= 1) {
+        alert("Deixe pelo menos um banco criado.");
         return;
-
     }
 
-    if(
-        !confirm(
-            "Deseja excluir este banco?"
-        )
-    ){
-
+    if (!confirm("Deseja excluir este banco?")) {
         return;
-
     }
 
     delete bancos[bancoAtual];
-
-    bancoAtual =
-        Object.keys(bancos)[0];
+    bancoAtual = Object.keys(bancos)[0];
 
     salvar();
-
     atualizarSelect();
-
     renderizarQuestoes();
-
 };
 
-
-
 btnSalvarQuestao.onclick = function () {
-
-    const pergunta =
-        document
-            .getElementById("pergunta")
-            .value
-            .trim();
-
-    const alternativaA =
-        document
-            .getElementById("alternativaA")
-            .value
-            .trim();
-
-    const alternativaB =
-        document
-            .getElementById("alternativaB")
-            .value
-            .trim();
-
-    const alternativaC =
-        document
-            .getElementById("alternativaC")
-            .value
-            .trim();
-
-    const alternativaD =
-        document
-            .getElementById("alternativaD")
-            .value
-            .trim();
-
-    const respostaCorreta =
-        parseInt(
-            document
-                .getElementById("respostaCorreta")
-                .value
-        );
+    const pergunta = document.getElementById("pergunta").value.trim();
+    const alternativaA = document.getElementById("alternativaA").value.trim();
+    const alternativaB = document.getElementById("alternativaB").value.trim();
+    const alternativaC = document.getElementById("alternativaC").value.trim();
+    const alternativaD = document.getElementById("alternativaD").value.trim();
+    const respostaCorreta = parseInt(document.getElementById("respostaCorreta").value);
 
     if (
         pergunta === "" ||
@@ -248,105 +144,45 @@ btnSalvarQuestao.onclick = function () {
         alternativaC === "" ||
         alternativaD === ""
     ) {
-
-        alert(
-            "Preencha todos os campos."
-        );
-
+        alert("Preencha todos os campos.");
         return;
-
     }
 
     bancos[bancoAtual].push({
-
         pergunta: pergunta,
-
-        alternativas: [
-
-            alternativaA,
-
-            alternativaB,
-
-            alternativaC,
-
-            alternativaD
-
-        ],
-
+        alternativas: [alternativaA, alternativaB, alternativaC, alternativaD],
         correta: respostaCorreta
-
     });
 
     salvar();
-
     popupQuestao.style.display = "none";
 
-    document
-        .getElementById("pergunta")
-        .value = "";
-
-    document
-        .getElementById("alternativaA")
-        .value = "";
-
-    document
-        .getElementById("alternativaB")
-        .value = "";
-
-    document
-        .getElementById("alternativaC")
-        .value = "";
-
-    document
-        .getElementById("alternativaD")
-        .value = "";
-
-    document
-        .getElementById("respostaCorreta")
-        .value = "0";
+    document.getElementById("pergunta").value = "";
+    document.getElementById("alternativaA").value = "";
+    document.getElementById("alternativaB").value = "";
+    document.getElementById("alternativaC").value = "";
+    document.getElementById("alternativaD").value = "";
+    document.getElementById("respostaCorreta").value = "0";
 
     renderizarQuestoes();
-
 };
 
-
 function excluirQuestao(indice) {
+    const confirmar = confirm("Deseja excluir esta questão?");
+    if (!confirmar) return;
 
-    const confirmar = confirm(
-        "Deseja excluir esta questão?"
-    );
-
-    if (!confirmar) {
-
-        return;
-
-    }
-
-    bancos[bancoAtual].splice(
-        indice,
-        1
-    );
-
+    bancos[bancoAtual].splice(indice, 1);
     salvar();
-
     renderizarQuestoes();
-
 }
 
-
-
 function renderizarQuestoes() {
-
     const lista = document.getElementById("listaQuestoes");
-
     lista.innerHTML = "";
 
-    if (!bancos[bancoAtual]) {
-        return;
-    }
+    if (!bancos[bancoAtual]) return;
 
     bancos[bancoAtual].forEach(function (questao, indice) {
-
         const card = document.createElement("div");
         card.className = "questao";
 
@@ -357,109 +193,104 @@ function renderizarQuestoes() {
         const resultado = document.createElement("p");
         resultado.className = "resultado";
 
-        
         let respondida = false;
 
         questao.alternativas.forEach(function (texto, i) {
-
             const botao = document.createElement("button");
             botao.className = "alternativa";
 
             const letras = ["A", "B", "C", "D"];
-
-            botao.textContent =
-                letras[i] + ") " + texto;
+            botao.textContent = letras[i] + ") " + texto;
 
             botao.onclick = function () {
-
-                if (respondida) {
-                    return;
-                }
-
+                if (respondida) return;
                 respondida = true;
 
-                
-                const alternativas =
-                    card.querySelectorAll(".alternativa");
+                const alternativas = card.querySelectorAll(".alternativa");
 
                 alternativas.forEach(function (btn, indiceAlt) {
-
                     if (indiceAlt === questao.correta) {
-
                         btn.classList.add("correta");
-
                     }
-
                 });
 
+                // INTEGRADO: Condicional onde valida se a resposta está certa
                 if (i === questao.correta) {
+                    resultado.textContent = "✅ Você acertou! (+100 ⚡)";
+                    resultado.style.color = "#2ecc71";
 
-                    resultado.textContent =
-                        "✅ Você acertou!";
-
-                    resultado.style.color =
-                        "#2ecc71";
+                    // Executa a função adicionando os 100 créditos no localStorage
+                    adicionarMoedas(100);
 
                 } else {
-
                     botao.classList.add("errada");
-
-                    const letraCorreta =
-                        letras[questao.correta];
-
-                    resultado.textContent =
-                        "❌ Você errou! A resposta correta é " +
-                        letraCorreta + ".";
-
-                    resultado.style.color =
-                        "#e74c3c";
-
+                    const letraCorreta = letras[questao.correta];
+                    resultado.textContent = "❌ Você errou! A resposta correta é " + letraCorreta + ".";
+                    resultado.style.color = "#e74c3c";
                 }
 
+                // CORREÇÃO: Cria e exibe o botão "Tentar Novamente" específico deste card
+                const btnReset = document.createElement("button");
+                btnReset.textContent = "🔄 Tentar novamente";
+                btnReset.className = "btnResetQuestao";
+                btnReset.onclick = function () {
+                    renderizarQuestoes();
+                };
+                card.insertBefore(btnReset, btnExcluir);
             };
 
             card.appendChild(botao);
-
         });
 
-       
         card.appendChild(resultado);
 
-        const btnExcluir =
-            document.createElement("button");
-
-        btnExcluir.className =
-            "btnExcluirQuestao";
-
-        btnExcluir.textContent =
-            "🗑 Excluir Questão";
-
+        const btnExcluir = document.createElement("button");
+        btnExcluir.className = "btnExcluirQuestao";
+        btnExcluir.textContent = "🗑 Excluir Questão";
         btnExcluir.onclick = function () {
-
             excluirQuestao(indice);
-
         };
-
         card.appendChild(btnExcluir);
 
         lista.appendChild(card);
-
     });
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnAtivarIA = document.getElementById('btnAtivarIA');
+        const iaInputGroup = document.getElementById('iaInputGroup');
+        const gerarQuestoesBtn = document.getElementById('gerarQuestoesBtn');
+        const temaIA = document.getElementById('temaIA');
 
+      
+        if (btnAtivarIA && iaInputGroup) {
+            btnAtivarIA.addEventListener('click', () => {
+                iaInputGroup.classList.remove('escondido'); 
+                btnAtivarIA.style.display = 'none'; 
+                temaIA.focus(); 
+            });
+        }
+
+        
+        if (gerarQuestoesBtn) {
+            gerarQuestoesBtn.addEventListener('click', () => {
+                const comandoUsuario = temaIA.value.trim();
+
+                if (comandoUsuario === "") {
+                    alert("Por favor, digite o tipo de questão ou assunto que você deseja gerar!");
+                    return;
+                }
+
+                
+                alert(`✨ Enviando comando para a Vertex AI: "${comandoUsuario}"\n\nEm breve, as questões geradas serão injetadas diretamente na sua tela abaixo!`);
+
+                // Opcional: Limpa e fecha o campo após o envio
+                temaIA.value = "";
+                iaInputGroup.classList.add('escondido');
+                btnAtivarIA.style.display = 'flex';
+            });
+        }
+    });
 }
 
-
+// Inicializadores da página
 carregar();
-
 renderizarQuestoes();
-
-const btnReset = document.createElement("button");
-
-btnReset.textContent = "🔄 Tentar novamente";
-btnReset.className = "btnResetQuestao";
-
-btnReset.onclick = function () {
-    renderizarQuestoes();
-};
-
-card.appendChild(btnReset);

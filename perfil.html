@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashii⚡</title>
     <link href="perfil.css" rel="stylesheet">
-    <script>src = "perfil.js"</script>
+    <script src="perfil.js" defer></script> 
 </head>
 
 <body>
-<aside class="sidebar">
+    <aside class="sidebar">
         <div class="logo"><img src="logo.png" alt="Flashii"></div>
         <a href="index.html" class="item">FlashCards</a>
         <a href="chat.html" class="item">Chat</a>
@@ -18,14 +18,17 @@
         <a href="banco.html" class="item">Banco de Questões</a>
         <a href="perfil.html" class="item active">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
-        <a href="loja.html" class="item">Loja</a>
+             <a href="loja.html" class="item">Loja</a>
+             <a href="pomodoro.html" class="item">Pomodoro</a>
     </aside>
+    
     <main class="tela">
         <h1 class="texto">Meu Perfil</h1>
 
         <div class="perfil">
-            <div class="avatar">...</div>
-            <button>Alterar Foto</button>
+            <div class="avatar" id="avatar-display">...</div>
+            
+            <button type="button" id="btn-alterar-foto">Alterar Foto</button>
 
             <form class="grid" action="cadastrar.php" method="post">
                 <div class="caixa1">
@@ -34,28 +37,52 @@
                 </div>
                 <div class="caixa2">
                     <label>Email</label>
-                    <input type="email"  placeholder="Ex: arthurmorello2007@gmail.com">
+                    <input type="email" placeholder="Ex: arthurmorello2007@gmail.com">
                 </div>
                 <div>
                     <label>Idade</label>
-                    <input type="number"  placeholder="Ex: Idade em anos">
+                    <input type="number" placeholder="Ex: Idade em anos">
                 </div>
                 <div>
                     <label>Nível de Escolaridade</label>
                     <select>
                         <option>Ensino Superior</option>
-                         <option>Ensino Médio</option>
-                          <option>Ensino Fundamental</option>
+                        <option>Ensino Médio</option>
+                        <option>Ensino Fundamental</option>
                     </select>
                 </div>
                 <div class="caixa3">
                     <label>Instituição de Ensino</label>
                     <input type="text" placeholder="Ex: Colégio Progressão">
                 </div>
-                <button class="aceitar" onsubmit="cadastrarUsuario()">Cadastrar</button>
+                <button type="submit" class="aceitar" onsubmit="cadastrarUsuario()">Cadastrar</button>
             </form>
         </div>
     </main>
-</body>
 
+    <div id="modal-icones" class="modal">
+        <div class="modal-content">
+            <span class="fechar-modal">&times;</span>
+            <h2>Escolha seu Ícone</h2>
+            
+            <div class="grid-icones">
+                <div class="opcao-icone" data-id="1" data-icon="🦊">🦊</div>
+                <div class="opcao-icone" data-id="2" data-icon="🚀">🚀</div>
+                <div class="opcao-icone" data-id="3" data-icon="💡">💡</div>
+                <div class="opcao-icone" data-id="4" data-icon="🎓">🎓</div>
+                <div class="opcao-icone" data-id="5" data-icon="🤖">🤖</div>
+                <div class="opcao-icone" data-id="6" data-icon="🤓​">🤓​</div>
+                <div class="opcao-icone" data-id="7" data-icon="👻​">👻​</div>
+                <div class="opcao-icone" data-id="8" data-icon="👽">👽</div>
+                <div class="opcao-icone" data-id="9" data-icon="⚡​">⚡​</div>
+                 <div class="opcao-icone" data-id="10" data-icon="🎃​">🎃​</div>
+                  <div class="opcao-icone" data-id="11" data-icon="🎭​">🎭​</div>
+                    <div class="opcao-icone" data-id="12" data-icon="​👾​">​👾​</div>
+                    <div class="opcao-icone" data-id="13" data-icon="​🥇​​">​🥇​​</div>
+                      <div class="opcao-icone" data-id="14" data-icon="​​🥈​​">​​🥈​​</div>
+                        <div class="opcao-icone" data-id="15" data-icon="​​🥉​">​🥉​</div>
+            </div>
+        </div>
+    </div>
+    </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -13,7 +11,7 @@
 
 <body>
 
-   
+
 
     <aside class="sidebar">
 
@@ -28,74 +26,58 @@
         <a href="perfil.html" class="item">Perfil</a>
         <a href="donate.html" class="item">Doações</a>
         <a href="loja.html" class="item">Loja</a>
+        <a href="pomodoro.html" class="item">Pomodoro</a>
 
     </aside>
 
-   
+
 
     <main class="tela">
 
         <h1 class="texto">FlashCards</h1>
 
-     
+
 
         <div class="topo">
-
             <div class="baralho-container">
-
                 <label>Baralho:</label>
-
                 <select id="baralhoSelect"></select>
 
-                <button id="novoBaralhoBtn">
-                    + Novo Baralho
-                </button>
+                <button id="novoBaralhoBtn">+ Novo Baralho</button>
 
-                <button id="excluirBaralhoBtn">
-                    Excluir Baralho
-                </button>
+                <button id="excluirBaralhoBtn">Excluir Baralho</button>
 
+                <button id="gerarBaralhoIABtn" class="btn-ia">
+                    ✨ Criar com IA
+                </button>
             </div>
 
         </div>
 
-       
 
-        <button
-            class="b"
-            onclick="abrirPopup()"
-        >
+
+
+        <button class="b" onclick="abrirPopup()">
             +
         </button>
 
-    
+
 
         <div id="listaFlashcards"></div>
 
     </main>
 
->
-
-    <div
-        id="overlay"
-        class="overlay"
     >
+
+    <div id="overlay" class="overlay">
 
         <div class="popup">
 
             <h2>Criar Flashcard</h2>
 
-            <input
-                type="text"
-                id="pergunta"
-                placeholder="Digite a pergunta"
-            >
+            <input type="text" id="pergunta" placeholder="Digite a pergunta">
 
-            <input
-                type="text"
-                id="resposta"
-                placeholder="Digite a resposta"
-            >
+            <input type="text" id="resposta" placeholder="Digite a resposta">
 
             <div class="popup-botoes">
 
@@ -113,22 +95,15 @@
 
     </div>
 
-    
 
-    <div
-        id="overlayBaralho"
-        class="overlay"
-    >
+
+    <div id="overlayBaralho" class="overlay">
 
         <div class="popup">
 
             <h2>Novo Baralho</h2>
 
-            <input
-                type="text"
-                id="nomeBaralho"
-                placeholder="Nome do baralho"
-            >
+            <input type="text" id="nomeBaralho" placeholder="Nome do baralho">
 
             <div class="popup-botoes">
 
@@ -151,4 +126,3 @@
 </body>
 
 </html>
-

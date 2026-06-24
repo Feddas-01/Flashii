@@ -1,0 +1,178 @@
+/* ==========================================================================
+   ESTILO CORRIGIDO - PADRÃO LOJA/PERFIL (SEM ALTERAR HTML/JS)
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4; /* Fundo cinza padrão da Loja */
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+/* 1. CORREÇÃO DA SIDEBAR (Igualzinha à da Loja para não embolar os textos) */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #fa3f06;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 180px;
+    height: auto;
+}
+
+/* Links da sidebar */
+.item {
+    padding: 18px 20px;
+    color: white;
+    text-decoration: none;
+    transition: .2s;
+    font-size: 15px;
+    display: block; /* Garante que os links fiquem um embaixo do outro */
+}
+
+/* Efeito ativo idêntico ao da Loja */
+.item:hover, .active {
+    background: white;
+    color: #fa3f06;
+    border-radius: 10px 0 0 10px;
+    margin-left: 10px;
+}
+
+/* 2. ÁREA DA TELA DA DIREITA (Onde seu HTML joga a classe .tela) */
+.tela {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o timer para a parte de baixo */
+    height: 100vh;
+}
+
+/* Estilo do título "Pomodoro" */
+.texto {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e64a19;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* 3. O CARD BRANCO DO TIMERO (Estilo Card da Loja / Caixa do Perfil) */
+.pomodoro-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra leve e moderna da loja */
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    margin: auto auto 20px auto; /* Centraliza no meio horizontal e joga para baixo */
+}
+
+/* CONFIGURAÇÃO DO TIMER (Texto e Inputs) */
+.config-box h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e64a19;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Inputs cinzas padrão do seu perfil */
+.input-group input {
+    width: 110px;
+    padding: 12px;
+    border: 1px solid #e64a1b;
+    background-color: #f0f2f5;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+/* BOTÃO PRINCIPAL (Estilo do botão 'aceitar' / botões da Loja) */
+.btn-pomodoro {
+    color: #ffffff;
+    background-color: #e64a19;
+    border: 1px solid #d44519;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: opacity 0.2s;
+}
+
+.btn-pomodoro:hover {
+    opacity: 0.9;
+}
+
+/* EXIBIÇÃO DO TEMPO REGRESSIVO */
+.countdown {
+    font-size: 72px;
+    font-weight: bold;
+    color: #e64a19;
+    font-family: monospace;
+    margin-bottom: 20px;
+}
+
+/* BOTÕES DE CONTROLE (Pausar e Cancelar) */
+.control-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-control {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #e64a19;
+    border: 1px solid #e64a19;
+    background: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn-control:hover {
+    background-color: #ffccbc;
+}
+
+/* Botão Cancelar em Destaque */
+.btn-danger {
+    color: #ffffff;
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+.btn-danger:hover {
+    background-color: #a93226;
+}
+
+/* CLASSE DE CONTROLE DO JAVASCRIPT */
+.escondido {
+    display: none !important;
+}
