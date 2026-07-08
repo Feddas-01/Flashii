@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Flashii ⚡ | Caminho do Estudante</title>
+
+    <link rel="stylesheet" href="caminho.css">
+
+</head>
+
+<body>
+
+ <aside class="sidebar">
+        <div class="logo"><img src="logo.png" alt="Flashii"></div>
+        <a href="index.html" class="item">FlashCards</a>
+        <a href="chat.html" class="item">Chat</a>
+        <a href="ranking.html" class="item">Ranking</a>
+        <a href="banco.html" class="item">Banco de Questões</a>
+        <a href="caminho.html" class="item active">Caminho do Estudante</a>
+        <a href="perfil.html" class="item">Perfil</a>
+        <a href="donate.html" class="item">Doações</a>
+        <a href="loja.html" class="item">Loja</a>
+        <a href="pomodoro.html" class="item">Pomodoro</a>
+        
+    </aside>
+
+
+
+<main class="conteudo">
+
+    <header class="cabecalho">
+
+        <div>
+
+            <h1>
+
+                🎓 Caminho do Estudante
+
+            </h1>
+
+            <p>
+
+                Complete módulos, ganhe XP, Flash Points e desbloqueie conquistas.
+
+            </p>
+
+        </div>
+
+        <div class="painelUsuario">
+
+            <div class="infoUsuario">
+
+                <span>Nível</span>
+
+                <strong id="nivel">
+                    1
+                </strong>
+
+            </div>
+
+            <div class="infoUsuario">
+
+                <span>XP</span>
+
+                <strong id="xp">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="infoUsuario">
+
+                <span>⚡ Flash Points</span>
+
+                <strong id="flashPoints">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    
+
+    <section class="barraNivel">
+
+        <div class="barraFundo">
+
+            <div
+                id="barraXP"
+                class="barraXP">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="materias">
+
+        <div class="cardMateria" data-materia="matematica">
+
+            <div class="icone">
+
+                📐
+
+            </div>
+
+            <h2>
+
+                Matemática
+
+            </h2>
+
+            <p>
+
+                Operações, Frações, Equações e muito mais.
+
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+        <div class="cardMateria" data-materia="portugues">
+
+            <div class="icone">
+
+                📖
+
+            </div>
+
+            <h2>
+
+                Português
+
+            </h2>
+
+            <p>
+
+                Gramática, Interpretação e Literatura.
+
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+        <div class="cardMateria" data-materia="historia">
+
+            <div class="icone">
+
+                🏛
+
+            </div>
+
+            <h2>
+
+                História
+
+            </h2>
+
+            <p>
+
+                Brasil, Idade Média, Guerras e muito mais.
+
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+        <div class="cardMateria" data-materia="geografia">
+
+            <div class="icone">
+
+                🌎
+
+            </div>
+
+            <h2>
+
+                Geografia
+
+            </h2>
+
+            <p>
+
+                Relevo, Clima, Cartografia e Atualidades.
+
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+                <div class="cardMateria" data-materia="biologia">
+
+            <div class="icone">
+                🧬
+            </div>
+
+            <h2>
+                Biologia
+            </h2>
+
+            <p>
+                Citologia, Genética, Ecologia e Evolução.
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+        <div class="cardMateria" data-materia="quimica">
+
+            <div class="icone">
+                ⚗️
+            </div>
+
+            <h2>
+                Química
+            </h2>
+
+            <p>
+                Química Geral, Orgânica e Físico-Química.
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+        <div class="cardMateria" data-materia="fisica">
+
+            <div class="icone">
+                ⚛️
+            </div>
+
+            <h2>
+                Física
+            </h2>
+
+            <p>
+                Mecânica, Óptica, Termologia e Eletricidade.
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+        <div class="cardMateria" data-materia="ingles">
+
+            <div class="icone">
+                🇺🇸
+            </div>
+
+            <h2>
+                Inglês
+            </h2>
+
+            <p>
+                Vocabulário, Gramática e Interpretação.
+            </p>
+
+            <button class="btnEntrar">
+
+                Entrar
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="painelProgresso">
+
+        <div class="cardProgresso">
+
+            <h2>
+                📊 Seu Progresso
+            </h2>
+
+            <div class="linhaProgresso">
+
+                <span>
+                    Módulos Concluídos
+                </span>
+
+                <strong id="modulosConcluidos">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="linhaProgresso">
+
+                <span>
+                    Questões Respondidas
+                </span>
+
+                <strong id="questoesRespondidas">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="linhaProgresso">
+
+                <span>
+                    Flashcards Estudados
+                </span>
+
+                <strong id="flashcardsConcluidos">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="linhaProgresso">
+
+                <span>
+                    Tempo de Estudo
+                </span>
+
+                <strong id="tempoEstudo">
+
+                    0 min
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="cardConquistas">
+
+            <h2>
+
+                🏆 Últimas Conquistas
+
+            </h2>
+
+            <div id="listaConquistas">
+
+                <p>
+
+                    Nenhuma conquista desbloqueada.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+   
+
+    <div
+        class="overlay"
+        id="overlayModulo">
+
+        <div class="popupModulo">
+
+            <div class="cabecalhoPopup">
+
+                <h2 id="tituloMateria">
+
+                    Matemática
+
+                </h2>
+
+                <button id="fecharModulo">
+
+                    ✖
+
+                </button>
+
+            </div>
+
+            <div
+                id="listaModulos"
+                class="listaModulos">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="overlay" id="overlayQuestao">
+
+        <div class="popupQuestao">
+
+            <div class="cabecalhoPopup">
+
+                <h2 id="tituloModulo">
+
+                    Questões
+
+                </h2>
+
+                <button id="fecharQuestoes">
+
+                    ✖
+
+                </button>
+
+            </div>
+
+            <div id="questaoAtual">
+
+                <h3 id="perguntaQuestao">
+
+                    Carregando questão...
+
+                </h3>
+
+            </div>
+
+            <div id="alternativas">
+
+            </div>
+
+            <button
+                id="btnProximaQuestao"
+                class="botaoPrincipal">
+
+                Próxima Questão
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    
+
+    <div
+        class="overlay"
+        id="overlayConclusao">
+
+        <div class="popupConclusao">
+
+            <h1>
+
+                🎉
+
+            </h1>
+
+            <h2>
+
+                Parabéns!
+
+            </h2>
+
+            <p>
+
+                Você concluiu este módulo.
+
+            </p>
+
+            <div class="recompensas">
+
+                <div>
+
+                    ⭐ XP
+
+                    <strong id="xpRecebido">
+
+                        +100
+
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    ⚡ Flash Points
+
+                    <strong id="fpRecebido">
+
+                        +50
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <button
+                id="btnContinuar"
+                class="botaoPrincipal">
+
+                Continuar
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <footer class="rodape">
+
+        <p>
+
+            Flashii © 2026
+
+        </p>
+
+        <p>
+
+            Aprender nunca foi tão divertido.
+
+        </p>
+
+    </footer>
+
+</main>
+
+
+
+
+
+
+<script src="gamificacao.js"></script>
+
+<script src="caminho.js"></script>
+
+</body>
+
+</html>
