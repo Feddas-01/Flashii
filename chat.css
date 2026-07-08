@@ -11,7 +11,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* SIDEBAR REESTRUTURADA */
+
 .sidebar {
     width: 250px;
     min-height: 100vh;
@@ -42,7 +42,7 @@ body {
 .item:hover, .active {
     background: white;
     color: #fa3f06;
-    border-radius: 10px 0 0 10px; /* Mantém o encaixe na tela */
+    border-radius: 10px 0 0 10px; 
     margin-left: 10px;
 }
 
